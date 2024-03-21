@@ -2,7 +2,8 @@
 /*cuenta-regresiva-del-tren-kata
 Kata 31 para la especialidad fullstackPHP 14-3-24
 
-Viatgem en un tren en marxa, en flames i, posiblement, ple de zombies. Hem de frenar-lo com sigui. Per això, necessitem activar el fre d'emergència. Por a fer-ho tenim això:
+Viatgem en un tren en marxa, en flames i, posiblement, ple de zombies. Hem de frenar-lo com sigui. Per això, 
+necessitem activar el fre d'emergència. Por a fer-ho tenim això:
 
 fre_1
 
