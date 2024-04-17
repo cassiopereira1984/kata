@@ -16,32 +16,57 @@ Output
 ¡Es un número de Armstrong!
 ¡No es un número de Armstrong!*/
 
-
-function esNumeroArmstrong($numero) {
-    $numero_str = (string)$numero;
-    $longitud = strlen($numero_str);
+function numArmstrong(int $num) : bool  {
+    $numStr = (string)$num;
+    $numLong = strlen($numStr);
     $suma = 0;
 
-    for ($i = 0; $i < $longitud; $i++) {
-        $suma += pow($numero_str[$i], $longitud);
+    for($i = 0; $i < $numLong; $i++) {
+        $suma += $numStr[$i] ** $numLong;
     }
-
-    if ($suma == $numero) {
+    
+    if($suma == $num) {
         return true;
     } else {
         return false;
     }
 }
 
-// Solicitar al usuario que ingrese un número
-echo "Por favor, ingresa un número: ";
-$numero = trim(fgets(STDIN)); // Leer el número desde la entrada estándar
+$num = readline("Dime un numero:");
 
 // Verificar si el número es un número de Armstrong y mostrar el resultado
-if (esNumeroArmstrong($numero)) {
-    echo "¡Es un número de Armstrong!\n";
-} else {
-    echo "¡No es un número de Armstrong!\n";
+if(numArmstrong($num)) {
+        echo "¡Es un número de Armstrong!\n";
+    } else {
+        echo "¡No es un número de Armstrong!\n";
 }
+
+
+// function esNumeroArmstrong($numero) {
+//     $numero_str = (string)$numero;
+//     $longitud = strlen($numero_str);
+//     $suma = 0;
+
+//     for ($i = 0; $i < $longitud; $i++) {
+//         $suma += pow($numero_str[$i], $longitud);
+//     }
+
+//     if ($suma == $numero) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// // Solicitar al usuario que ingrese un número
+// echo "Por favor, ingresa un número: ";
+// $numero = trim(fgets(STDIN)); // Leer el número desde la entrada estándar
+
+// // Verificar si el número es un número de Armstrong y mostrar el resultado
+// if (esNumeroArmstrong($numero)) {
+//     echo "¡Es un número de Armstrong!\n";
+// } else {
+//     echo "¡No es un número de Armstrong!\n";
+// }
 
 ?>

@@ -18,8 +18,7 @@ class Jugador {
     private int $puntos;
 
 
-    public function __construct(string $nombre, int $edad, Posicion $posicion, int $pacajeRecebidos, 
-    int $pacajeHechos, int $puntos) {
+    public function __construct(string $nombre, int $edad, Posicion $posicion, int $pacajeRecebidos, int $pacajeHechos, int $puntos) {
         $this->nombre = $nombre;
         $this->edad = $edad;
         $this->posicion = $posicion;
@@ -74,7 +73,7 @@ $equipo = [$jugador1, $jugador2, $jugador3, $jugador4];
 //var_dump($equipo);
 
 echo jugadorMasPuntos($equipo);
-echo menosPacajeHechos($equipo);
+echo menosPacajeHechos($equipoa);
 
 
 
