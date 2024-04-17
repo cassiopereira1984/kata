@@ -17,14 +17,20 @@ Output
 ¡No es un número de Armstrong!*/
 
 function numArmstrong(int $num) : bool  {
+    //cast a string de la variable num.
     $numStr = (string)$num;
+    //funcion strlen para contar la cantidad de caracteres del string.
     $numLong = strlen($numStr);
+    //iniciase la variable suma.
     $suma = 0;
 
+    //bucle for para pasar por todo el indice del string numStr.
     for($i = 0; $i < $numLong; $i++) {
+        //potencial de nunStr en el indice x. y suma a la variable.
         $suma += $numStr[$i] ** $numLong;
     }
     
+    //compara los valores de suma y num.
     if($suma == $num) {
         return true;
     } else {
@@ -32,6 +38,7 @@ function numArmstrong(int $num) : bool  {
     }
 }
 
+//solicitas el numero al user, debería er un string siempre????
 $num = readline("Dime un numero:");
 
 // Verificar si el número es un número de Armstrong y mostrar el resultado
