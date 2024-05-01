@@ -38,31 +38,35 @@ class Player
 
     public function move($direction)
     {
+        $posXP = 0;
+        $posXL = 0;
+        $posYP = 0;
+        $posYL = 0;
         switch($direction) {
             case "up":
-                $this->posX++;
-                if($this->posX > 9) {
-                    echo "You can't move to that direction";
-                    $this->posX--;
-                }
+                $posXP = $this->posX + 1;
+                break;
             case "down":
-                $this->posX--;
-                if($this->posX < 0) {
-                    echo "You can't move to that direction";
-                    $this->posX++;
-                }
+                $posXL = $this->posX - 1;
+                break;
             case "right":
-                $this->posY++;
-                if($this->posY > 9) {
-                    echo "You can't move to that direction";
-                    $this->posY--;
-                }
+                $posYP = $this->posY + 1;
+                break;
             case "left":
-                $this->posY--;
-                if($this->posY < 0) {
-                    echo "You can't move to that direction";
-                    $this->posY++;
-                }
+                $posYL = $this->posY - 1;
+                break;
+        }
+
+        if ($posXL < 0 || $posXP > 9 || $posYL < 0 || $posYP > 9) {
+            echo "You can't move there";
+        } else {
+            
+        }
+        //falta incrementar las posiciones y hacer con que el msj solo se imprima una vez.
+    }
+
+        public function getPos() {
+            echo $this->posX . " " . $this->posY;
         }
         /*Las posiciones se representan por números entre el 0 y el 9. Cada jugador se puede
 mover en una de estas 4 direcciones:
@@ -71,7 +75,6 @@ Arriba
 Abajo
 Izquierda
 Derecha*/
-    }
 }
 
 class Warrior extends Player 
@@ -86,7 +89,7 @@ dirección escogida (en lugar de una).*/
     {
         parent::__construct($nickname, $posX, $posY);
         $this->warriorName = $warriorName;
-        $this->swordName = $warriorName;
+        $this->swordName = $swordName;
     }
 
     public function atackWarrior(): void
@@ -98,6 +101,7 @@ dirección escogida (en lugar de una).*/
     {
         parent::move($direction);
         parent::move($direction);
+        echo $this->getPos();
         //Además, los guerreros pueden correr, que les hace avanzar de dos posiciones en dos posiciones
     }
 }
@@ -155,4 +159,9 @@ class Archer extends Player
         }
     }
 }
+
+$warrior1 = new Warrior("CPP", 0, 0, "Adam", "Scalibur");
+
+$warrior1->atackWarrior();
+$warrior1->runWarrior("down")
 ?>
