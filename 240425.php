@@ -36,7 +36,7 @@ class Player
         $this->posY = $posY;
     }
 
-    public function move($direction)
+    public function move($direction): void
     {
         $posX = $this->posX;
         $posY = $this->posY;
@@ -66,9 +66,30 @@ class Player
         echo $this->getPos();
     }
 
-        public function getPos() {
-            echo $this->posX . " " . $this->posY . PHP_EOL;
-        }
+    public function getPos(): void
+    {
+        echo $this->posX . " " . $this->posY . PHP_EOL;
+    }
+
+    public function getPosX(): int
+    {
+        return $this->posX;
+    }
+
+    public function getPosY(): int
+    {
+        return $this->posY;
+    }
+
+    public function setPosX(int $posX): void
+    {
+        $this->posX = $posX;
+    }
+
+    public function setPosY(int $posY): void
+    {
+        $this->posY = $posY;
+    }
         /*Las posiciones se representan por números entre el 0 y el 9. Cada jugador se puede
 mover en una de estas 4 direcciones:
 
@@ -98,11 +119,34 @@ dirección escogida (en lugar de una).*/
         echo $this->warriorName . " attack with " . $this->swordName . "!!!" . PHP_EOL;
     }
 
-    public function runWarrior($direction)
+    public function runWarrior($direction): void
     {
-        parent::move($direction);
-        parent::move($direction);
-        //Además, los guerreros pueden correr, que les hace avanzar de dos posiciones en dos posiciones
+        $posX = $this->getPosX();
+        $posY = $this->getPosY();
+
+        switch($direction) {
+            case "up":
+                $posX += 2;
+                break;
+            case "down":
+                $posX -= 2;
+                break;
+            case "right":
+                $posY += 2;
+                break;
+            case "left":
+                $posY -= 2;
+                break;
+        }
+
+        if ($posX < 0 || $posX > 9 || $posY < 0 || $posY > 9) {
+            echo "You can't move there" . PHP_EOL;
+        } else {
+            $this->setPosX($posX);
+            $this->setPosY($posY); 
+        }
+
+        echo $this->getPos();
     }
 }
 
@@ -164,7 +208,7 @@ class Archer extends Player
         }
     }
 
-    public function getArrowsNun(): int 
+    public function getArrowsNum(): int 
     {
         return $this->arrowsNum;
     }
