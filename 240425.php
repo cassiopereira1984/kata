@@ -38,35 +38,36 @@ class Player
 
     public function move($direction)
     {
-        $posXP = 0;
-        $posXL = 0;
-        $posYP = 0;
-        $posYL = 0;
+        $posX = $this->posX;
+        $posY = $this->posY;
+
         switch($direction) {
             case "up":
-                $posXP = $this->posX + 1;
+                ++$posX;
                 break;
             case "down":
-                $posXL = $this->posX - 1;
+                --$posX;
                 break;
             case "right":
-                $posYP = $this->posY + 1;
+                ++$posY;
                 break;
             case "left":
-                $posYL = $this->posY - 1;
+                --$posY;
                 break;
         }
 
-        if ($posXL < 0 || $posXP > 9 || $posYL < 0 || $posYP > 9) {
-            echo "You can't move there";
+        if ($posX < 0 || $posX > 9 || $posY < 0 || $posY > 9) {
+            echo "You can't move there" . PHP_EOL;
         } else {
-            
+            $this->posX = $posX;
+            $this->posY = $posY; 
         }
-        //falta incrementar las posiciones y hacer con que el msj solo se imprima una vez.
+
+        echo $this->getPos();
     }
 
         public function getPos() {
-            echo $this->posX . " " . $this->posY;
+            echo $this->posX . " " . $this->posY . PHP_EOL;
         }
         /*Las posiciones se representan por números entre el 0 y el 9. Cada jugador se puede
 mover en una de estas 4 direcciones:
@@ -92,16 +93,15 @@ dirección escogida (en lugar de una).*/
         $this->swordName = $swordName;
     }
 
-    public function atackWarrior(): void
+    public function attackWarrior(): void
     {
-        echo $this->warriorName . " atack with " . $this->swordName . "!!!" . PHP_EOL;
+        echo $this->warriorName . " attack with " . $this->swordName . "!!!" . PHP_EOL;
     }
 
     public function runWarrior($direction)
     {
         parent::move($direction);
         parent::move($direction);
-        echo $this->getPos();
         //Además, los guerreros pueden correr, que les hace avanzar de dos posiciones en dos posiciones
     }
 }
@@ -133,6 +133,11 @@ los hechizos sólo conocemos el nombre.*/
             echo $this->mageName . " don't know this spell." . PHP_EOL;
         }
     }
+
+    public function getSpellBook(): array 
+    {
+        return $this->spellBook;
+    }
 }
 
 class Archer extends Player
@@ -158,10 +163,15 @@ class Archer extends Player
             echo $this->archerName . " don't have arrows" . PHP_EOL;
         }
     }
+
+    public function getArrowsNun(): int 
+    {
+        return $this->arrowsNum;
+    }
 }
 
 $warrior1 = new Warrior("CPP", 0, 0, "Adam", "Scalibur");
 
-$warrior1->atackWarrior();
+$warrior1->attackWarrior();
 $warrior1->runWarrior("down")
 ?>
