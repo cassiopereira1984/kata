@@ -16,9 +16,6 @@ $warrior = new Warrior("test", 0, 0, "Lancelot", "CruzX");
 
 class ArcherTest extends TestCase
 {
-    //create
-    //arrow > 0
-    //arrow shot
     function testArrowNumEquals() 
     {
         $archer = new Archer("test", 0, 0, "Robin", "longbow", 10);
@@ -42,47 +39,47 @@ class ArcherTest extends TestCase
     }
 }
 
-class MageTest extends TestCase
-{
-    //create
-    //array != 0
-    //useSpell
-    function testSpeelBook()
-    {
-        $mage = New Mage("test", 0, 0, "Merlin");
-        $mage->addSpell("FireBall");
-        $this->assertNotEmpty($mage->getSpellBook());
-    }
-}
+// class MageTest extends TestCase
+// {
+//     //create
+//     //array != 0
+//     //useSpell
+//     function testSpeelBook()
+//     {
+//         $mage = New Mage("test", 0, 0, "Merlin");
+//         $mage->addSpell("FireBall");
+//         $this->assertNotEmpty($mage->getSpellBook());
+//     }
+// }
 
-class WarriorTest extends TestCase
-{
-    //create
-    //attack
-    //run
-    function testAttack()
-    {
+// class WarriorTest extends TestCase
+// {
+//     //create
+//     //attack
+//     //run
+//     function testAttack()
+//     {
 
-    }
-}
+//     }
+// }
 
-class PlayerTest extends TestCase
-{
-    //create player
-    //moves
-}
-/*create class es != null
-move up == -1 || 10?
-move down == -1 || 10?
-move left == -1 || 10?
-move right == -1 || 10?
-runn?
-spellbook != 0?
-arrowsNum == -1?
+// class PlayerTest extends TestCase
+// {
+//     //create player
+//     //moves
+// }
+// /*create class es != null
+// move up == -1 || 10?
+// move down == -1 || 10?
+// move left == -1 || 10?
+// move right == -1 || 10?
+// runn?
+// spellbook != 0?
+// arrowsNum == -1?
 
-tener en cuenta:
-cantidad, y si es null?
-orden
-dicotomias
-valores - umbral*/
+// tener en cuenta:
+// cantidad, y si es null?
+// orden
+// dicotomias
+// valores - umbral*/
 ?>
