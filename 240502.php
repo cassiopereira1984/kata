@@ -6,7 +6,7 @@ Donat l'exercici de la setmana passada fes una proposta e implementa tests mitja
 
 Pots fer servir el teu propi codi font o la proposta de codi font del mentor.*/
 
-include_once "240425.php";
+require "240425.php";
 
 use PHPUnit\Framework\TestCase;
 
@@ -19,10 +19,26 @@ class ArcherTest extends TestCase
     //create
     //arrow > 0
     //arrow shot
-    function testArrowNum() 
+    function testArrowNumEquals() 
     {
-        $archer = new Archer("test", 0, 0, "Robin", "longbow", 0);
-        $this->assertTrue($archer->getArrowsNum() > 0);
+        $archer = new Archer("test", 0, 0, "Robin", "longbow", 10);
+        $this->assertEquals($archer->getArrowsNum(), 10);
+    }
+
+    function testArrowShotLess()
+    {
+        $archer = new Archer("test", 0, 0, "Robin", "longbow", 10);
+        $arrowInit = $archer->getArrowsNum();
+        $archer->shotArrow();
+        $this->assertTrue($arrowInit, $archer->getArrowsNum());
+    }
+
+    function testArrowShotToString()
+    {
+        $archer = new Archer("test", 0, 0, "Robin", "longbow", 10);
+        $archer->shotArrow();
+        $output = "Robin attack with longbow";
+        $this->assertStringContainsString("Robin attack with longbow", $output);
     }
 }
 
