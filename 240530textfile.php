@@ -12,34 +12,41 @@ Pista
 fread*/
 
 $texto = "loveIsAwful.txt";
-$textoAbierto = fread($texto, 'r');
+$textoOpen = fopen($texto, 'r');
+$textoRead = fread($textoOpen, filesize("loveIsAwful.txt"));
+$textoExplode = explode(" ", $textoRead);
 
-// $file = "calculs_" . $n . ".txt";
-// $fileEdit = fopen($file, "w+");
-// $info = "Num: " . $n . " Cuadrado: " . $cuadrado . " Factorial: " . $factorial . ".";
-// fwrite($fileEdit, $info);
-// fclose($fileEdit);
+//print_r($textoExplode);
 
 
-
-$texto[] = $textoAbierto;
-$vocales = ['a', 'e', 'i', 'o', 'u'];
+$vocales = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'];
 $palabrasVocales = [];
 $palabrasT = [];
 
-foreach($texto as $palabra) {
+foreach($textoExplode as $palabra) {
+    $palabra = trim($palabra, ".,!?");
+
     if(in_array($palabra[0], $vocales)) {
         $palabrasVocales[] = $palabra;
     }
 }
 
-foreach($texto as $palabra) {
-    if (strpos($palabra, 't')) {
+foreach($textoExplode as $palabra) {
+    $palabra = trim($palabra, ".,!?");
+
+    if (strpos($palabra, 't') ) {
+        $palabrasT[] = $palabra;
+    }
+
+    if (strpos($palabra, 'T') ) {
         $palabrasT[] = $palabra;
     }
 }
 
-print_r($palabrasVocales);
-print_r($palabrasT);
+//print_r($palabrasVocales);
+//print_r($palabrasT);
+
+echo "La palabras con la letra T en el texto son: " . implode(", ", $palabrasT) . "." . PHP_EOL;
+echo "La palabras con vocales el texto son: " . implode(", ", $palabrasVocales) . ".";
 
 ?>
