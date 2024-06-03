@@ -8,7 +8,7 @@ Donada una matriu 3x3, per exemple:
              9,5,1
              4,3,8]
 Verificar si la matriu és màgica o no.
-
+g
 Input
 
 [2,7,6 9,5,1 4,3,8]
@@ -43,7 +43,6 @@ function sumColumna($array) {
 }
 
 function sumDiagonal($array) {
-    $sumMagic = array_sum($array[0]);
     $sumDiagonal1 = $array[0][0] + $array[1][1] + $array[2][2];
     $sumDiagonal2 = $array[2][0] + $array[1][1] + $array[0][2];
 
