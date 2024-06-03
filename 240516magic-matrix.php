@@ -22,61 +22,44 @@ No és una matriu màgica!*/
 
 function sumLinea($array) {
     $sumMagic = array_sum($array[0]);
-
-    for($i = 0; $i < 3 ; $i++) {
-        $sumLinea = array_sum($array[$i]);
-    }
-    
-    if($sumLinea == $sumMagic) {
-        return true;
-    } else {
-        return false;
+    for ($i = 0; $i < 3; $i++) {
+        if (array_sum($array[$i]) == $sumMagic) {
+            return true;
+        }
     }
 }
 
 function sumColumna($array) {
     $sumMagic = array_sum($array[0]);
-
-    for($i = 0; $i < 3; $i++) {
-        for($j = 0; $j < 3; $j++) {
-            $sumColumna = array_sum($array[$i][$j]);
+    for ($i = 0; $i < 3; $i++) {
+        $sumColumna = 0;
+        for ($j = 0; $j < 3; $j++) {
+            $sumColumna += $array[$j][$i];
         }
-    }
-        
         if ($sumColumna == $sumMagic) {
             return true;
-        } else {
-            return false;
         }
+    }
 }
 
 function sumDiagonal($array) {
+    $sumMagic = array_sum($array[0]);
     $sumDiagonal1 = $array[0][0] + $array[1][1] + $array[2][2];
     $sumDiagonal2 = $array[2][0] + $array[1][1] + $array[0][2];
 
-    if($sumDiagonal1 == $sumDiagonal2) {
-        return true;
-    } else {
-        return false;
-    }
+    return ($sumDiagonal1 == $sumDiagonal2);
 }
 
 function matrixMagica($array) {
-    if(sumDiagonal($array) && sumColumna($array) && sumLinea($array)) {
-        return true;
-    } else {
-        return false;
-    }
+    return sumLinea($array) && sumColumna($array) && sumDiagonal($array);
 }
 
-$array1 = [[2,7,6], [9,5,1], [4,3,8]];
+$array = [[3,7,6], [9,5,1], [4,3,8]];
+// $array2 = [[3,7,6], [9,5,1], [4,3,8]];
 
-$array2 = [[3,7,6], [9,5,1], [4,3,8]];
-
-if(matrixMagica($array)) {
-    echo "Es Magico!";
+if (matrixMagica($array)) {
+    echo "És una matriu màgica!";
 } else {
-    echo "NO es Magico!";
+    echo "No és una matriu màgica!";
 }
-
 ?>
