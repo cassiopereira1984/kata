@@ -43,6 +43,8 @@ foreach($textoExplode as $palabra) {
     }
 }
 
+fclose($textoOpen);
+
 //print_r($palabrasVocales);
 //print_r($palabrasT);
 
