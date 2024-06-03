@@ -42,7 +42,7 @@ echo $factorial. PHP_EOL;
 $file = "calculs_" . $n . ".txt";
 
 $fileEdit = fopen($file, "w+");
-$info = "Num: " . $n . " Cuadrado: " . $cuadrado . " Factorial: " . $factorial . ".";
+$info = "Num: " . $n . " Cuadrado: " . $cuadrado . ", Cubo: " . $cubo . ", Factorial: " . $factorial . ".";
 fwrite($fileEdit, $info);
 fclose($fileEdit);
 
