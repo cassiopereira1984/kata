@@ -29,41 +29,45 @@ no lo encutras es false.
 idea dos: recoges el array por con un FOR, coges en ( y le guarda en un array, luego buscas el )
 y checkeas si el array está vacía.*/
 
-
-
-function encontrarParentesis(string $input): bool {
-    //$parentesisAbierto = [];
-    //$parentesisCerrado = [];
-    $parentesisAbierto = 0;
-    $parentesisCerrado = 0;
-    $parentesis = [];
+function toArray(string $input): array {
+    $array = [];
 
     for($i = 0; $i < strlen($input); $i++) {
-        $caracter = $input[$i];
+        $array[] = $input[$i];
+    }
 
-        if($caracter == '(') {
-            //$parentesisAbierto[] = $caracter;
-            $parentesis[] = $caracter;
+    return $array;
+}
+
+function validacionParentesis(array $toArray): bool {
+    $parentesisAbierto = 0;
+    $parentesisCerrado = 0;
+    $ultimoIndice = end($toArray);
+
+    if($toArray[1] === ')') {
+        return false;
+    } elseif($ultimoIndice === '(') {
+        return false;
+    }
+
+    foreach($toArray as $indice) {
+        if($indice === '(') {
             $parentesisAbierto++;
-        } elseif($caracter == ')') {
-            //$parentesisCerrado[] = $caracter;
-            $parentesis[] = $caracter;
+        }
+        if($indice === ')') {
             $parentesisCerrado++;
         }
     }
 
-    if($parentesis[1] === ')') {
-        return false;
-    }
-
     return $parentesisAbierto == $parentesisCerrado;
-}
+} 
+
 
 //$input = "(3 + 4) * 2";
 $input = "(5 + 3) * (3 - 1)";
 //$input = "(5 + 3 * (3 - 1)";
 
-if(encontrarParentesis($input)) {
+if(validacionParentesis($toArray)) {
     Echo "CORRECTO";
 } else {
     echo "INCORRECTO";
