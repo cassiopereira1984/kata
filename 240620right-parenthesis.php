@@ -39,18 +39,18 @@ function toArray(string $input): array {
     return $array;
 }
 
-function validacionParentesis(array $toArray): bool {
+function validacionParentesis(array $array): bool {
     $parentesisAbierto = 0;
     $parentesisCerrado = 0;
-    $ultimoIndice = end($toArray);
+    $ultimoValor = end($array);
 
-    if($toArray[1] === ')') {
+    if($array[0] === ')') {
         return false;
-    } elseif($ultimoIndice === '(') {
+    } elseif($ultimoValor === '(') {
         return false;
     }
 
-    foreach($toArray as $indice) {
+    foreach($array as $indice) {
         if($indice === '(') {
             $parentesisAbierto++;
         }
@@ -64,10 +64,15 @@ function validacionParentesis(array $toArray): bool {
 
 
 //$input = "(3 + 4) * 2";
-$input = "(5 + 3) * (3 - 1)";
+//$input = "(5 + 3) * (3 - 1)";
 //$input = "(5 + 3 * (3 - 1)";
+$input = "((()))";
+//((()())
+//(()))())
 
-if(validacionParentesis($toArray)) {
+$array = toArray($input);
+
+if(validacionParentesis($array)) {
     Echo "CORRECTO";
 } else {
     echo "INCORRECTO";
